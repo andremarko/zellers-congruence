@@ -1,6 +1,6 @@
 ## Zeller's Congruence
 
-Pretty straight forward, insert an date and discover the day of the week for that specific date. 
+Pretty straight forward, insert a date and discover the day of the week for that specific date. 
 
 Works up to January 1583
 
