@@ -1,12 +1,6 @@
-# Zeller's congruence
-'''
-Inserir docstring
-
-'''
-# Month dictionary
-months = {
-    1: "January",
-    2: "February",
+# Zeller's Congruence Algorithm
+     
+months = { 
     3: "March",
     4: "April",
     5: "May",
@@ -16,45 +10,45 @@ months = {
     9: "September",
     10: "October",
     11: "November",
-    12: "December"
+    12: "December",
+    13: "January",
+    14: "February"
 }
+
+day_of_the_week = {
+    0: "Saturday",
+    1: "Sunday",
+    2: "Monday",
+    3: "Tuesday",
+    4: "Wednesday",
+    5: "Thursday",
+    6: "Friday"    
+}
+
 day = int(input("Insert a day: "))
 month = int(input("Insert a month: "))
+year = int(input("Insert a year: "))
 
-if month == 1 or month == 2:
-    month += 12 #Iterates for Zeller formula
-    
-    year = int(input("Insert a year: "))
-    
-    # revisar 
-    k = year % 100 # Extracts the last two digits of the year
-    
-    cent = year // 100
- 
-else:
-    k = int(input("Insert a year: ")) # 
-    j = int(input("Insert a century: ")) 
+# Adjust for January and February -- Formula
+if month == 1 or month == 2:    
+    month += 12
+    year -=1
 
+# Extract the last two digits of the year    
+k = year % 100
+# Extract the century
+cent = year // 100
 
-x = (day + ((month + 1) * 26 // 10) + k + (k // 4) +(cent // 4) - 2 * cent)
+# Zeller's Congruence Formula
+x = (day + ((month + 1) * 26 // 10) + k + (k // 4) +(cent // 4) - 2 * cent) % 7
 
-mod = (x % 7)
+# Display day of the week - dict 
+day_week = day_of_the_week[x]
 
-if mod == 0:
-    print(f"{months[month % 12]} {day}, {year} was a Saturday")
+# Display month
+display_month = months[month]
 
 
-#elif mod == 1:
-#    print("A data inserida foi um Domingo")
-#elif mod == 2:
-#    print("A data inserida foi uma Segunda-feira")
-#elif mod == 3:
-#    print("A: data inserida foi uma Terça-feira")
-#elif mod == 4:
-#    print("A data inserida foi uma Quarta-feira")
-#elif mod == 5:
-#    print("A data inserida foi uma Quinta-feira")
-#elif mod == 6:
-#    print("A data inserida foi uma Sexta-feira")
+print(f"{display_month} {day}, {year + 1 if month > 12 else year} was a {day_week}")
 
-    
+
